@@ -1,0 +1,49 @@
+<h2>Add Subscription</h2>
+<form method="post">
+    Name: <input type="text" name="name"><br>
+    Price (₹): <input type="number" name="price"><br>
+    Start Date: <input type="date" name="start_date"><br>
+    Next Payment Date: <input type="date" name="next_payment"><br>
+
+    Payment Method:
+    <select name="payment_method">
+        <option>Credit Card</option>
+        <option>Debit Card</option>
+        <option>Bank Transfer</option>
+    </select><br>
+
+    Paid By: <input type="text" name="paid_by"><br>
+
+    Category:
+    <select name="category">
+        <option>Music</option>
+        <option>Food</option>
+        <option>Gaming</option>
+        <option>Technology</option>
+    </select><br>
+
+    Enable Notifications: <input type="checkbox" name="notify"><br>
+
+    Status:
+    <select name="status">
+        <option value="enabled">Enabled</option>
+        <option value="disabled">Disabled</option>
+    </select><br>
+
+    If Disabled, Replace with:
+    <select name="replacement">
+        <option>None</option>
+        <option>Amazon Prime</option>
+        <option>Hotstar</option>
+        <option>Spotify</option>
+        <option>Netflix</option>
+    </select><br>
+
+    Renewal Type:
+    <select name="renewal_type">
+        <option>Auto</option>
+        <option>Manual</option>
+    </select><br>
+
+    <input type="submit" value="Save">
+</form>

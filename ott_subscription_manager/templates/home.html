@@ -1,0 +1,86 @@
+<h2>Welcome {{ username }}</h2>
+<a href="/add_subscription">+ New Subscription</a> | 
+<a href="/logout" style="float:right;">Logout</a>
+<a href="/home" class="btn btn-danger"></a>
+<a href="/login"></a>
+
+<form method="post" action="/search">
+    <input type="text" name="query" placeholder="Search OTTs...">
+    <input type="submit" value="Search">
+</form>
+<!-- Show all Subscriptions -->
+ <h3> User Subscriptions:</h3>
+<ul>
+  {% for sub in subscriptions %}
+    <li>{{ sub[1] }} - {{ sub[2] }} - ₹{{ sub[3] }} - {{ sub[6] }} - {{ sub[12] }}</li>
+  {% endfor %}
+</ul>
+
+<!-- Modal Footer -->
+<div class="modal-header">
+  <h5 class="modal-title">{{ popup_title }}</h5>
+  <div style="margin-top: 10px;">
+    <a href="/home" class="btn btn-secondary">Close</a>
+    <a href="/home" class="btn-close" aria-label="Close"></a>
+</div>
+</div>
+<h3>Filter Subscriptions</h3>
+<div>
+    <a href="/filter/member" class="btn btn-outline-primary">Member</a>
+    <a href="/filter/category" class="btn btn-outline-success">Category</a>
+    <a href="/filter/payment" class="btn btn-outline-warning">Payment Method</a>
+    <a href="/filter/state" class="btn btn-outline-dark">State</a>
+    <a href="/filter/renewal" class="btn btn-outline-info">Renewal Type</a>
+    <a href="/home" class="btn btn-outline-danger">Clear</a>
+    
+</div>
+{% if show_popup %}
+<!-- 6x10 Box Modal -->
+<div class="modal fade show" id="dataPopup" style="display:block;" tabindex="-1">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ popup_title }}</h5>
+        <a href="/home" class="btn-close"></a>
+        <a href="/close" class="btn-close"></a>
+      </div>
+      <div class="modal-body">
+        <table class="table table-bordered text-center">
+          <thead class="table-light">
+            <tr>
+              <th>Username</th>
+              <th>OTT Name</th>
+              <th>Payment Method</th>
+              <th>Status</th>
+              <th>Renewal Type</th>
+              <th>Category</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for row in subscriptions %}
+            <tr>
+              <td>{{ row[1] }}</td>
+              <td>{{ row[2] }}</td>
+              <td>{{ row[6] }}</td>
+              <td>{{ "Enabled" if row[10] else "Disabled" }}</td>
+              <td>{{ row[12] }}</td>
+              <td>{{ row[8] }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<br>
+
+<h3>All Users:</h3>
+<ul>
+{% for user in users %}
+    <li>{{ user[1] }}</li>
+{% endfor %}
+</ul>
+
